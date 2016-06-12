@@ -1,0 +1,12 @@
+version: '2.0'
+services:
+  angular:
+    restart: unless-stopped
+    build: .
+    links:
+      - grid:selenium
+    depends_on:
+     - grid
+  grid:
+    restart: unless-stopped
+    image: grid

@@ -1,0 +1,15 @@
+master:
+  build: .
+  restart: unless-stopped
+  environment:
+    JAVA_OPTS: "-Dfile.encoding=UTF8"
+  ports:
+    - "50000:50000"
+    - "8080:8080"
+  volumes:
+    - /var/jenkins_homes
+nginx:
+  restart: unless-stopped
+  links:
+    - master
+  image: nginx
